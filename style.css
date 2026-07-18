@@ -122,3 +122,46 @@ h2 { font-size: 1.2rem; font-weight: bold; }
     background: #ffffff; color: #000000; border: none; padding: 18px; border-radius: 30px;
     font-size: 1rem; font-weight: bold; width: 100%; cursor: pointer; text-transform: uppercase;
 }
+
+/* =========================================
+   8. DISCOVER TAB (GRID)
+   ========================================= */
+.discover-grid { display: grid; gap: 15px; }
+.discover-card {
+    border-radius: 16px; padding: 25px; color: white;
+    display: flex; flex-direction: column; gap: 10px;
+}
+.discover-card h3 { font-size: 1.5rem; margin-bottom: 5px; }
+.core-bg { background: linear-gradient(135deg, #f59e0b, #d97706); }
+.hiit-bg { background: linear-gradient(135deg, #ef4444, #b91c1c); }
+.strength-bg { background: linear-gradient(135deg, #10b981, #047857); }
+
+/* =========================================
+   9. BOTTOM SHEET MODAL (WEIGHT LOG)
+   ========================================= */
+.modal-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.5); z-index: 150;
+    opacity: 1; transition: opacity 0.3s ease;
+}
+.modal-overlay.hidden { opacity: 0; pointer-events: none; }
+
+.bottom-sheet {
+    position: fixed; bottom: 0; left: 0; width: 100%;
+    background: #ffffff; border-radius: 20px 20px 0 0;
+    padding: 25px; z-index: 200;
+    transform: translateY(0); transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 -5px 15px rgba(0,0,0,0.1);
+}
+.bottom-sheet.hidden { transform: translateY(100%); }
+
+.sheet-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.sheet-header h3 { font-size: 1.2rem; font-weight: bold; }
+.sheet-header .btn-icon { color: #1a1a1a; }
+
+.sheet-body input {
+    width: 100%; padding: 15px; border-radius: 10px;
+    border: 2px solid #e2e8f0; font-size: 1.2rem;
+    text-align: center; font-weight: bold; outline: none;
+}
+.sheet-body input:focus { border-color: #2563eb; }
