@@ -1,0 +1,136 @@
+/* =========================================
+   1. GLOBAL RESET & NTC AESTHETIC
+   ========================================= */
+* {
+    margin: 0; padding: 0; box-sizing: border-box;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+body {
+    background-color: #000000;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+#app-container {
+    width: 100%;
+    max-width: 480px; /* Mobile App Constraints */
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* =========================================
+   2. HEADER
+   ========================================= */
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user-info h1 {
+    font-size: 1.8rem;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+}
+
+.user-info .title { color: #ccff00; /* Volt Green */ }
+.user-info p { color: #888888; font-size: 0.9rem; margin-top: 5px; font-weight: 600; }
+
+.avatar-placeholder {
+    width: 50px; height: 50px;
+    background: #222;
+    border-radius: 50%;
+    border: 2px solid #ccff00;
+}
+
+/* =========================================
+   3. RPG STATS GRID
+   ========================================= */
+.stats-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 10px;
+}
+
+.stat-box {
+    background: #111111;
+    padding: 15px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.stat-box .label { font-size: 0.75rem; color: #888888; text-transform: uppercase; font-weight: bold; }
+.stat-box .value { font-size: 1.2rem; font-weight: 800; }
+
+.progress-bar {
+    width: 100%; height: 6px;
+    background: #333;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 5px;
+}
+
+.stamina-fill { background: #ccff00; transition: width 0.3s ease; }
+
+/* =========================================
+   4. QUEST & REFERRAL CARDS
+   ========================================= */
+.quest-card, .referral-card {
+    background: #111111;
+    border-radius: 16px;
+    padding: 25px;
+    border: 1px solid #222;
+}
+
+.quest-header, .ref-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.quest-header h2, .ref-header h3 { font-size: 1rem; color: #888888; text-transform: uppercase; letter-spacing: 1px; }
+.badge { background: #ffffff; color: #000000; padding: 4px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; }
+
+.quest-title { font-size: 1.8rem; font-weight: 900; margin-bottom: 10px; }
+.quest-desc { color: #aaaaaa; font-size: 0.95rem; line-height: 1.5; margin-bottom: 25px; }
+.limit { color: #ccff00; font-weight: bold; font-size: 0.9rem; }
+
+/* =========================================
+   5. BUTTONS & ANIMATIONS
+   ========================================= */
+.btn-primary, .btn-secondary {
+    width: 100%;
+    padding: 18px;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: transform 0.1s;
+}
+
+.btn-primary { background: #ffffff; color: #000000; }
+.btn-primary:active { transform: scale(0.96); }
+
+.btn-secondary { background: #222222; color: #ffffff; margin-top: 15px; }
+
+/* Physical Impact Animation */
+.shake-impact {
+    animation: shake 0.4s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+@keyframes shake {
+    10%, 90% { transform: translate3d(-1px, 0, 0); }
+    20%, 80% { transform: translate3d(2px, 0, 0); }
+    30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+    40%, 60% { transform: translate3d(4px, 0, 0); }
+}
