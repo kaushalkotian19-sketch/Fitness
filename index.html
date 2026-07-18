@@ -63,6 +63,33 @@
 
     </main>
 
+        <!-- ========================================== -->
+    <!-- FULL SCREEN WORKOUT PLAYER                 -->
+    <!-- ========================================== -->
+    <section id="workout-player" class="overlay-screen hidden">
+        <header class="player-nav">
+            <button id="btn-quit" class="btn-icon">✖</button>
+            <div class="progress-container">
+                <span id="exercise-counter">1 / 5</span>
+                <div class="progress-bar"><div id="workout-progress" class="fill stamina-fill" style="width: 20%;"></div></div>
+            </div>
+        </header>
+
+        <div class="exercise-display">
+            <!-- Visual Placeholder for Exercise Animation/Video -->
+            <div class="visual-box">
+                <h1 id="exercise-timer">00:30</h1>
+            </div>
+            
+            <h2 id="exercise-name" class="exercise-title">Jumping Jacks</h2>
+            <p id="exercise-type">Warmup • High Intensity</p>
+        </div>
+
+        <div class="player-controls">
+            <button id="btn-next-exercise" class="btn-primary">Next Exercise</button>
+        </div>
+    </section>
+
     <script src="script.js"></script>
 </body>
 </html>
