@@ -25,17 +25,10 @@
             <section class="weekly-goal">
                 <div class="section-header">
                     <h2>Weekly Goal</h2>
-                    <span class="goal-count">0/4 ✏️</span>
+                    <span class="goal-count"><span id="goal-val">0</span>/4 ✏️</span>
                 </div>
-                <div class="calendar-strip">
-                    <div class="day"><span>S</span><span>12</span></div>
-                    <div class="day"><span>M</span><span>13</span></div>
-                    <div class="day"><span>T</span><span>14</span></div>
-                    <div class="day"><span>W</span><span>15</span></div>
-                    <div class="day"><span>T</span><span>16</span></div>
-                    <div class="day"><span>F</span><span>17</span></div>
-                    <div class="day active"><span>S</span><span>18</span></div>
-                </div>
+                <!-- JS will generate the calendar here -->
+                <div class="calendar-strip" id="home-calendar"></div>
             </section>
 
             <section class="challenges">
@@ -46,24 +39,35 @@
                         <h3>FULL BODY CHALLENGE</h3>
                         <div class="progress-mini"><div class="fill" style="width: 75%;"></div></div>
                         <h2>DAY 21</h2>
-                        <button class="btn-start" id="btn-complete-workout">START</button>
-                    </div>
-                    <div class="challenge-card purple-card">
-                        <span class="days-left">28 DAYS</span>
-                        <h3>CALISTHENICS PLAN</h3>
-                        <p>Take on bodyweight muscle gain.</p>
-                        <button class="btn-start">START</button>
+                        <button class="btn-start start-workout-btn" data-routine="fullbody">START</button>
                     </div>
                 </div>
             </section>
+        </div>
 
-            <section class="body-focus">
-                <h2>Body Focus</h2>
-                <div class="filter-pills">
-                    <span class="pill active">Abs</span>
-                    <span class="pill">Arm</span>
-                    <span class="pill">Chest</span>
-                    <span class="pill">Leg</span>
+        <!-- ========================================== -->
+        <!-- VIEW: DISCOVER (LIBRARY)                   -->
+        <!-- ========================================== -->
+        <div id="view-discover" class="view-section hidden">
+            <header class="app-header">
+                <h1>DISCOVER</h1>
+            </header>
+            
+            <section class="discover-grid">
+                <div class="discover-card core-bg">
+                    <h3>Core Burn</h3>
+                    <p>15 Mins • High Intensity</p>
+                    <button class="btn-start start-workout-btn" data-routine="core">START</button>
+                </div>
+                <div class="discover-card hiit-bg">
+                    <h3>HIIT Cardio</h3>
+                    <p>20 Mins • Sweat</p>
+                    <button class="btn-start start-workout-btn" data-routine="hiit">START</button>
+                </div>
+                <div class="discover-card strength-bg">
+                    <h3>Upper Body</h3>
+                    <p>30 Mins • Strength</p>
+                    <button class="btn-start start-workout-btn" data-routine="upper">START</button>
                 </div>
             </section>
         </div>
@@ -78,15 +82,15 @@
 
             <section class="report-stats">
                 <div class="stat-box">
-                    <span class="stat-val">21</span>
+                    <span class="stat-val" id="stat-workouts">0</span>
                     <span class="stat-lbl">Workouts</span>
                 </div>
                 <div class="stat-box">
-                    <span class="stat-val">4593</span>
+                    <span class="stat-val" id="stat-kcal">0</span>
                     <span class="stat-lbl">Kcal</span>
                 </div>
                 <div class="stat-box">
-                    <span class="stat-val">217</span>
+                    <span class="stat-val" id="stat-minutes">0</span>
                     <span class="stat-lbl">Minutes</span>
                 </div>
             </section>
@@ -96,23 +100,12 @@
                     <h2>History</h2>
                     <a href="#" class="link-blue">All records</a>
                 </div>
-                <div class="calendar-strip">
-                    <div class="day"><span>S</span><span>12</span></div>
-                    <div class="day"><span>M</span><span>13</span></div>
-                    <div class="day"><span>T</span><span>14</span></div>
-                    <div class="day"><span>W</span><span>15</span></div>
-                    <div class="day"><span>T</span><span>16</span></div>
-                    <div class="day"><span>F</span><span>17</span></div>
-                    <div class="day active"><span>S</span><span>18</span></div>
-                </div>
+                <!-- JS will generate the calendar here -->
+                <div class="calendar-strip" id="report-calendar"></div>
                 <div class="streak-container">
                     <div class="streak-item">
                         <span class="streak-lbl">Day Streak</span>
-                        <span class="streak-val">🔥 0</span>
-                    </div>
-                    <div class="streak-item right">
-                        <span class="streak-lbl">Personal Best</span>
-                        <span class="streak-val">9 days</span>
+                        <span class="streak-val" id="streak-val">🔥 0</span>
                     </div>
                 </div>
             </section>
@@ -120,21 +113,16 @@
             <section class="report-card">
                 <div class="section-header">
                     <h2>Weight</h2>
-                    <button class="btn-log">Log</button>
+                    <button class="btn-log" id="btn-open-weight">Log</button>
                 </div>
                 <div class="weight-container">
                     <div class="weight-current">
                         <span class="streak-lbl">Current</span>
-                        <span class="weight-val">105.4 lbs</span>
-                    </div>
-                    <div class="weight-history">
-                        <div>Heaviest <strong>105.4</strong></div>
-                        <div>Lightest <strong>105.4</strong></div>
+                        <span class="weight-val" id="current-weight">105.4 lbs</span>
                     </div>
                 </div>
             </section>
         </div>
-
     </main>
 
     <!-- ========================================== -->
@@ -148,7 +136,7 @@
     </nav>
 
     <!-- ========================================== -->
-    <!-- FULL SCREEN WORKOUT PLAYER OVERLAY         -->
+    <!-- WORKOUT PLAYER OVERLAY                     -->
     <!-- ========================================== -->
     <section id="workout-player" class="overlay-screen hidden">
         <header class="player-nav">
@@ -161,12 +149,27 @@
         <div class="exercise-display">
             <div class="visual-box"><h1 id="exercise-timer">00:30</h1></div>
             <h2 id="exercise-name" class="exercise-title">Jumping Jacks</h2>
-            <p id="exercise-type">Warmup • High Intensity</p>
+            <p id="exercise-type">Warmup</p>
         </div>
         <div class="player-controls">
             <button id="btn-next-exercise" class="btn-primary">Next Exercise</button>
         </div>
     </section>
+
+    <!-- ========================================== -->
+    <!-- WEIGHT LOGGING MODAL (BOTTOM SHEET)        -->
+    <!-- ========================================== -->
+    <div id="modal-overlay" class="modal-overlay hidden"></div>
+    <div id="weight-modal" class="bottom-sheet hidden">
+        <div class="sheet-header">
+            <h3>Log Weight</h3>
+            <button id="btn-close-weight" class="btn-icon">✖</button>
+        </div>
+        <div class="sheet-body">
+            <input type="number" id="weight-input" placeholder="Enter weight (lbs)" step="0.1" value="105.4">
+            <button id="btn-save-weight" class="btn-primary" style="margin-top: 15px; background: #2563eb; color: white;">Save</button>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
