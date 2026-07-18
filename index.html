@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness RPG | Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Main App Container -->
+    <main id="app-container">
+        
+        <!-- Header & Level -->
+        <header class="top-nav">
+            <div class="user-info">
+                <h1>Level 5 <span class="title">Novice</span></h1>
+                <p>XP: 1,250 / 2,000</p>
+            </div>
+            <div class="avatar-placeholder"></div>
+        </header>
+
+        <!-- RPG Economy Stats -->
+        <section class="stats-grid">
+            <div class="stat-box">
+                <span class="label">Stamina</span>
+                <span class="value" id="stamina-val">100/100</span>
+                <div class="progress-bar"><div class="fill stamina-fill" style="width: 100%;"></div></div>
+            </div>
+            <div class="stat-box">
+                <span class="label">Coins</span>
+                <span class="value" id="coin-val">240</span>
+            </div>
+            <div class="stat-box">
+                <span class="label">Diamonds</span>
+                <span class="value" id="diamond-val">15</span>
+            </div>
+        </section>
+
+        <!-- Active Quest (Workout) -->
+        <section class="quest-card" id="active-quest">
+            <div class="quest-header">
+                <h2>Today's Quest</h2>
+                <span class="badge">HIIT</span>
+            </div>
+            <h3 class="quest-title">20-Min Full Body Burn</h3>
+            <p class="quest-desc">Depletes 20 Stamina. Focus on explosive movements.</p>
+            
+            <button id="btn-complete-workout" class="btn-primary">
+                Complete Workout
+            </button>
+        </section>
+
+        <!-- Daily Referral Hub -->
+        <section class="referral-card">
+            <div class="ref-header">
+                <h3>Recruit Allies</h3>
+                <span class="limit">0 / 10 Today</span>
+            </div>
+            <p>Earn 1 💎 for every friend who joins your squad today.</p>
+            <button class="btn-secondary">Share Invite Link</button>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
