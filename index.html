@@ -3,68 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fitness RPG | Dashboard</title>
+    <title>Fitness RPG</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Main App Container -->
     <main id="app-container">
         
-        <!-- Header & Level -->
-        <header class="top-nav">
-            <div class="user-info">
-                <h1>Level 5 <span class="title">Novice</span></h1>
-                <p>XP: 1,250 / 2,000</p>
-            </div>
-            <div class="avatar-placeholder"></div>
-        </header>
+        <!-- ========================================== -->
+        <!-- VIEW: HOME (TRAINING)                      -->
+        <!-- ========================================== -->
+        <div id="view-home" class="view-section active">
+            <header class="app-header">
+                <h1>HOME WORKOUT</h1>
+                <div class="economy-badges">
+                    <span class="badge stamina">⚡ <span id="stamina-val">100</span>/100</span>
+                    <span class="badge coins">🪙 <span id="coin-val">240</span></span>
+                </div>
+            </header>
 
-        <!-- RPG Economy Stats -->
-        <section class="stats-grid">
-            <div class="stat-box">
-                <span class="label">Stamina</span>
-                <span class="value" id="stamina-val">100/100</span>
-                <div class="progress-bar"><div class="fill stamina-fill" style="width: 100%;"></div></div>
-            </div>
-            <div class="stat-box">
-                <span class="label">Coins</span>
-                <span class="value" id="coin-val">240</span>
-            </div>
-            <div class="stat-box">
-                <span class="label">Diamonds</span>
-                <span class="value" id="diamond-val">15</span>
-            </div>
-        </section>
+            <section class="weekly-goal">
+                <div class="section-header">
+                    <h2>Weekly Goal</h2>
+                    <span class="goal-count">0/4 ✏️</span>
+                </div>
+                <div class="calendar-strip">
+                    <div class="day"><span>S</span><span>12</span></div>
+                    <div class="day"><span>M</span><span>13</span></div>
+                    <div class="day"><span>T</span><span>14</span></div>
+                    <div class="day"><span>W</span><span>15</span></div>
+                    <div class="day"><span>T</span><span>16</span></div>
+                    <div class="day"><span>F</span><span>17</span></div>
+                    <div class="day active"><span>S</span><span>18</span></div>
+                </div>
+            </section>
 
-        <!-- Active Quest (Workout) -->
-        <section class="quest-card" id="active-quest">
-            <div class="quest-header">
-                <h2>Today's Quest</h2>
-                <span class="badge">HIIT</span>
-            </div>
-            <h3 class="quest-title">20-Min Full Body Burn</h3>
-            <p class="quest-desc">Depletes 20 Stamina. Focus on explosive movements.</p>
-            
-            <button id="btn-complete-workout" class="btn-primary">
-                Complete Workout
-            </button>
-        </section>
+            <section class="challenges">
+                <h2>Challenge</h2>
+                <div class="card-scroll-container">
+                    <div class="challenge-card blue-card">
+                        <span class="days-left">21 DAYS</span>
+                        <h3>FULL BODY CHALLENGE</h3>
+                        <div class="progress-mini"><div class="fill" style="width: 75%;"></div></div>
+                        <h2>DAY 21</h2>
+                        <button class="btn-start" id="btn-complete-workout">START</button>
+                    </div>
+                    <div class="challenge-card purple-card">
+                        <span class="days-left">28 DAYS</span>
+                        <h3>CALISTHENICS PLAN</h3>
+                        <p>Take on bodyweight muscle gain.</p>
+                        <button class="btn-start">START</button>
+                    </div>
+                </div>
+            </section>
 
-        <!-- Daily Referral Hub -->
-        <section class="referral-card">
-            <div class="ref-header">
-                <h3>Recruit Allies</h3>
-                <span class="limit">0 / 10 Today</span>
-            </div>
-            <p>Earn 1 💎 for every friend who joins your squad today.</p>
-            <button class="btn-secondary">Share Invite Link</button>
-        </section>
+            <section class="body-focus">
+                <h2>Body Focus</h2>
+                <div class="filter-pills">
+                    <span class="pill active">Abs</span>
+                    <span class="pill">Arm</span>
+                    <span class="pill">Chest</span>
+                    <span class="pill">Leg</span>
+                </div>
+            </section>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- VIEW: REPORT                               -->
+        <!-- ========================================== -->
+        <div id="view-report" class="view-section hidden">
+            <header class="app-header">
+                <h1>REPORT</h1>
+            </header>
+
+            <section class="report-stats">
+                <div class="stat-box">
+                    <span class="stat-val">21</span>
+                    <span class="stat-lbl">Workouts</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-val">4593</span>
+                    <span class="stat-lbl">Kcal</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-val">217</span>
+                    <span class="stat-lbl">Minutes</span>
+                </div>
+            </section>
+
+            <section class="report-card">
+                <div class="section-header">
+                    <h2>History</h2>
+                    <a href="#" class="link-blue">All records</a>
+                </div>
+                <div class="calendar-strip">
+                    <div class="day"><span>S</span><span>12</span></div>
+                    <div class="day"><span>M</span><span>13</span></div>
+                    <div class="day"><span>T</span><span>14</span></div>
+                    <div class="day"><span>W</span><span>15</span></div>
+                    <div class="day"><span>T</span><span>16</span></div>
+                    <div class="day"><span>F</span><span>17</span></div>
+                    <div class="day active"><span>S</span><span>18</span></div>
+                </div>
+                <div class="streak-container">
+                    <div class="streak-item">
+                        <span class="streak-lbl">Day Streak</span>
+                        <span class="streak-val">🔥 0</span>
+                    </div>
+                    <div class="streak-item right">
+                        <span class="streak-lbl">Personal Best</span>
+                        <span class="streak-val">9 days</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="report-card">
+                <div class="section-header">
+                    <h2>Weight</h2>
+                    <button class="btn-log">Log</button>
+                </div>
+                <div class="weight-container">
+                    <div class="weight-current">
+                        <span class="streak-lbl">Current</span>
+                        <span class="weight-val">105.4 lbs</span>
+                    </div>
+                    <div class="weight-history">
+                        <div>Heaviest <strong>105.4</strong></div>
+                        <div>Lightest <strong>105.4</strong></div>
+                    </div>
+                </div>
+            </section>
+        </div>
 
     </main>
 
-        <!-- ========================================== -->
-    <!-- FULL SCREEN WORKOUT PLAYER                 -->
+    <!-- ========================================== -->
+    <!-- BOTTOM NAVIGATION                          -->
+    <!-- ========================================== -->
+    <nav class="bottom-nav">
+        <div class="nav-item active" data-target="view-home">⏱️<span>Training</span></div>
+        <div class="nav-item" data-target="view-discover">🧭<span>Discover</span></div>
+        <div class="nav-item" data-target="view-report">📊<span>Report</span></div>
+        <div class="nav-item" data-target="view-settings">⚙️<span>Settings</span></div>
+    </nav>
+
+    <!-- ========================================== -->
+    <!-- FULL SCREEN WORKOUT PLAYER OVERLAY         -->
     <!-- ========================================== -->
     <section id="workout-player" class="overlay-screen hidden">
         <header class="player-nav">
@@ -74,17 +158,11 @@
                 <div class="progress-bar"><div id="workout-progress" class="fill stamina-fill" style="width: 20%;"></div></div>
             </div>
         </header>
-
         <div class="exercise-display">
-            <!-- Visual Placeholder for Exercise Animation/Video -->
-            <div class="visual-box">
-                <h1 id="exercise-timer">00:30</h1>
-            </div>
-            
+            <div class="visual-box"><h1 id="exercise-timer">00:30</h1></div>
             <h2 id="exercise-name" class="exercise-title">Jumping Jacks</h2>
             <p id="exercise-type">Warmup • High Intensity</p>
         </div>
-
         <div class="player-controls">
             <button id="btn-next-exercise" class="btn-primary">Next Exercise</button>
         </div>
