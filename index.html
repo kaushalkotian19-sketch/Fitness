@@ -27,10 +27,10 @@
                     <h2>Weekly Goal</h2>
                     <span class="goal-count"><span id="goal-val">0</span>/4 ✏️</span>
                 </div>
-                <!-- JS will generate the calendar here -->
                 <div class="calendar-strip" id="home-calendar"></div>
             </section>
 
+            <!-- CHALLENGE (Existing) -->
             <section class="challenges">
                 <h2>Challenge</h2>
                 <div class="card-scroll-container">
@@ -43,6 +43,85 @@
                     </div>
                 </div>
             </section>
+
+            <!-- NEW: STRETCH & WARM UP -->
+            <section class="stretch-warmup">
+                <div class="section-header">
+                    <h2>Stretch & Warm Up</h2>
+                    <a href="#" class="link-blue">More ></a>
+                </div>
+                <div class="card-scroll-container">
+                    <div class="wide-card start-workout-btn" data-routine="yogaMorning">
+                        <div class="card-overlay">
+                            <h3>Morning Yoga Flow</h3>
+                            <p>7 Min</p>
+                        </div>
+                    </div>
+                    <div class="wide-card start-workout-btn" data-routine="warmup">
+                        <div class="card-overlay">
+                            <h3>4 Min Tabata</h3>
+                            <p>Warm Up</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- NEW: POPULAR GOALS -->
+            <section class="popular-goals">
+                <h2>Popular Goals</h2>
+                <div class="filter-pills">
+                    <span class="pill active">Keep Fit</span>
+                    <span class="pill">Build Muscle</span>
+                    <span class="pill">Burn Fat</span>
+                </div>
+                <div class="list-container">
+                    <div class="list-item start-workout-btn" data-routine="warmup">
+                        <div class="item-img"></div>
+                        <div class="item-info">
+                            <h4>Morning Warm-Up</h4>
+                            <p>5 min • Beginner</p>
+                        </div>
+                        <div class="item-arrow">➔</div>
+                    </div>
+                    <div class="list-item start-workout-btn" data-routine="yogaFlexibility">
+                        <div class="item-img"></div>
+                        <div class="item-info">
+                            <h4>Shoulder Tension Relief</h4>
+                            <p>7 min • Beginner</p>
+                        </div>
+                        <div class="item-arrow">➔</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- UPDATED: BODY FOCUS -->
+            <section class="body-focus">
+                <h2>Body Focus</h2>
+                <div class="filter-pills">
+                    <span class="pill active">Abs</span>
+                    <span class="pill">Arm</span>
+                    <span class="pill">Chest</span>
+                    <span class="pill">Leg</span>
+                </div>
+                <div class="list-container">
+                    <div class="list-item start-workout-btn" data-routine="absBeginner">
+                        <div class="item-img"></div>
+                        <div class="item-info">
+                            <h4>Abs Beginner</h4>
+                            <p>15 mins • 16 Exercises</p>
+                            <span class="difficulty">⚡ <span class="dim">⚡ ⚡</span></span>
+                        </div>
+                    </div>
+                    <div class="list-item start-workout-btn" data-routine="absIntermediate">
+                        <div class="item-img"></div>
+                        <div class="item-info">
+                            <h4>Abs Intermediate</h4>
+                            <p>24 mins • 21 Exercises</p>
+                            <span class="difficulty">⚡ ⚡ <span class="dim">⚡</span></span>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
 
         <!-- ========================================== -->
@@ -52,22 +131,18 @@
             <header class="app-header">
                 <h1>DISCOVER</h1>
             </header>
-            
             <section class="discover-grid">
-                <div class="discover-card core-bg">
+                <div class="discover-card core-bg start-workout-btn" data-routine="core">
                     <h3>Core Burn</h3>
                     <p>15 Mins • High Intensity</p>
-                    <button class="btn-start start-workout-btn" data-routine="core">START</button>
                 </div>
-                <div class="discover-card hiit-bg">
+                <div class="discover-card hiit-bg start-workout-btn" data-routine="hiit">
                     <h3>HIIT Cardio</h3>
                     <p>20 Mins • Sweat</p>
-                    <button class="btn-start start-workout-btn" data-routine="hiit">START</button>
                 </div>
-                <div class="discover-card strength-bg">
+                <div class="discover-card strength-bg start-workout-btn" data-routine="upper">
                     <h3>Upper Body</h3>
                     <p>30 Mins • Strength</p>
-                    <button class="btn-start start-workout-btn" data-routine="upper">START</button>
                 </div>
             </section>
         </div>
@@ -76,58 +151,54 @@
         <!-- VIEW: REPORT                               -->
         <!-- ========================================== -->
         <div id="view-report" class="view-section hidden">
-            <header class="app-header">
-                <h1>REPORT</h1>
-            </header>
-
+            <!-- Report content remains exactly the same as previous step -->
+            <header class="app-header"><h1>REPORT</h1></header>
             <section class="report-stats">
-                <div class="stat-box">
-                    <span class="stat-val" id="stat-workouts">0</span>
-                    <span class="stat-lbl">Workouts</span>
-                </div>
-                <div class="stat-box">
-                    <span class="stat-val" id="stat-kcal">0</span>
-                    <span class="stat-lbl">Kcal</span>
-                </div>
-                <div class="stat-box">
-                    <span class="stat-val" id="stat-minutes">0</span>
-                    <span class="stat-lbl">Minutes</span>
-                </div>
+                <div class="stat-box"><span class="stat-val" id="stat-workouts">0</span><span class="stat-lbl">Workouts</span></div>
+                <div class="stat-box"><span class="stat-val" id="stat-kcal">0</span><span class="stat-lbl">Kcal</span></div>
+                <div class="stat-box"><span class="stat-val" id="stat-minutes">0</span><span class="stat-lbl">Minutes</span></div>
             </section>
-
             <section class="report-card">
-                <div class="section-header">
-                    <h2>History</h2>
-                    <a href="#" class="link-blue">All records</a>
-                </div>
-                <!-- JS will generate the calendar here -->
+                <div class="section-header"><h2>History</h2><a href="#" class="link-blue">All records</a></div>
                 <div class="calendar-strip" id="report-calendar"></div>
                 <div class="streak-container">
-                    <div class="streak-item">
-                        <span class="streak-lbl">Day Streak</span>
-                        <span class="streak-val" id="streak-val">🔥 0</span>
-                    </div>
+                    <div class="streak-item"><span class="streak-lbl">Day Streak</span><span class="streak-val" id="streak-val">🔥 0</span></div>
                 </div>
             </section>
-
             <section class="report-card">
-                <div class="section-header">
-                    <h2>Weight</h2>
-                    <button class="btn-log" id="btn-open-weight">Log</button>
-                </div>
+                <div class="section-header"><h2>Weight</h2><button class="btn-log" id="btn-open-weight">Log</button></div>
                 <div class="weight-container">
-                    <div class="weight-current">
-                        <span class="streak-lbl">Current</span>
-                        <span class="weight-val" id="current-weight">105.4 lbs</span>
-                    </div>
+                    <div class="weight-current"><span class="streak-lbl">Current</span><span class="weight-val" id="current-weight">105.4 lbs</span></div>
                 </div>
+            </section>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- VIEW: SETTINGS                             -->
+        <!-- ========================================== -->
+        <div id="view-settings" class="view-section hidden">
+            <header class="app-header"><h1>SETTINGS</h1></header>
+            <section class="settings-group">
+                <h2>Preferences</h2>
+                <div class="setting-item">
+                    <div class="setting-text">
+                        <span class="setting-title">Haptic Feedback</span>
+                        <span class="setting-desc">Vibrations on clicks</span>
+                    </div>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="toggle-haptics" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </section>
+            <section class="settings-group">
+                <h2>Account Data</h2>
+                <button id="btn-reset-data" class="btn-danger">Wipe Save Data</button>
             </section>
         </div>
     </main>
 
-    <!-- ========================================== -->
-    <!-- BOTTOM NAVIGATION                          -->
-    <!-- ========================================== -->
+    <!-- BOTTOM NAV & OVERLAYS -->
     <nav class="bottom-nav">
         <div class="nav-item active" data-target="view-home">⏱️<span>Training</span></div>
         <div class="nav-item" data-target="view-discover">🧭<span>Discover</span></div>
@@ -135,9 +206,7 @@
         <div class="nav-item" data-target="view-settings">⚙️<span>Settings</span></div>
     </nav>
 
-    <!-- ========================================== -->
-    <!-- WORKOUT PLAYER OVERLAY                     -->
-    <!-- ========================================== -->
+    <!-- WORKOUT PLAYER -->
     <section id="workout-player" class="overlay-screen hidden">
         <header class="player-nav">
             <button id="btn-quit" class="btn-icon">✖</button>
@@ -156,17 +225,12 @@
         </div>
     </section>
 
-    <!-- ========================================== -->
-    <!-- WEIGHT LOGGING MODAL (BOTTOM SHEET)        -->
-    <!-- ========================================== -->
+    <!-- WEIGHT MODAL -->
     <div id="modal-overlay" class="modal-overlay hidden"></div>
     <div id="weight-modal" class="bottom-sheet hidden">
-        <div class="sheet-header">
-            <h3>Log Weight</h3>
-            <button id="btn-close-weight" class="btn-icon">✖</button>
-        </div>
+        <div class="sheet-header"><h3>Log Weight</h3><button id="btn-close-weight" class="btn-icon">✖</button></div>
         <div class="sheet-body">
-            <input type="number" id="weight-input" placeholder="Enter weight (lbs)" step="0.1" value="105.4">
+            <input type="number" id="weight-input" placeholder="Enter weight" step="0.1" value="105.4">
             <button id="btn-save-weight" class="btn-primary" style="margin-top: 15px; background: #2563eb; color: white;">Save</button>
         </div>
     </div>
