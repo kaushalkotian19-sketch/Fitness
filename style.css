@@ -1,167 +1,653 @@
 /* =========================================
-   1. GLOBAL RESET & BASE
+   1. GLOBAL RESET & BASE THEME
    ========================================= */
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, sans-serif; }
-body {
-    background-color: #f8f9fa; color: #1a1a1a;
-    display: flex; justify-content: center; min-height: 100vh; padding-bottom: 70px;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
+
+body {
+    background-color: #f8f9fa;
+    color: #1a1a1a;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    padding-bottom: 70px; /* Space for fixed bottom nav */
+}
+
 #app-container {
-    width: 100%; max-width: 480px; background: #ffffff;
-    min-height: 100vh; padding: 20px;
+    width: 100%;
+    max-width: 480px; /* Constrains it to a mobile app width */
+    background: #ffffff;
+    min-height: 100vh;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
     box-shadow: 0 0 20px rgba(0,0,0,0.05);
 }
-.hidden { display: none !important; }
-.view-section { display: flex; flex-direction: column; gap: 30px; }
 
-/* =========================================
-   2. HEADER & ECONOMY
-   ========================================= */
-.app-header { display: flex; justify-content: space-between; align-items: center; padding-top: 10px; }
-.app-header h1 { font-size: 1.4rem; font-weight: 900; letter-spacing: -0.5px; text-transform: uppercase; }
-.economy-badges { display: flex; gap: 8px; }
-.badge { background: #f1f3f5; padding: 5px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; }
+.hidden {
+    display: none !important;
+}
 
-/* =========================================
-   3. CALENDAR & SHARED UI
-   ========================================= */
-.section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
-h2 { font-size: 1.2rem; font-weight: bold; }
-.goal-count { color: #3b82f6; font-weight: bold; font-size: 0.9rem; }
-.link-blue { color: #3b82f6; text-decoration: none; font-size: 0.9rem; font-weight: 600; }
-
-.calendar-strip { display: flex; justify-content: space-between; margin-bottom: 15px; }
-.day { display: flex; flex-direction: column; align-items: center; gap: 5px; font-size: 0.9rem; color: #868e96; font-weight: 600; }
-.day.active { color: #3b82f6; }
-.day.active span:last-child {
-    background: #3b82f6; color: white; width: 30px; height: 30px;
-    display: flex; justify-content: center; align-items: center; border-radius: 50%;
+.view-section {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
 }
 
 /* =========================================
-   4. HOME VIEW: CHALLENGES & PILLS
+   2. HEADER & ECONOMY (RPG ELEMENTS)
+   ========================================= */
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 10px;
+}
+
+.app-header h1 {
+    font-size: 1.4rem;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+    text-transform: uppercase;
+}
+
+.economy-badges {
+    display: flex;
+    gap: 8px;
+}
+
+.badge {
+    background: #f1f3f5;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+/* =========================================
+   3. SHARED UI ELEMENTS (Headers, Links, Pills)
+   ========================================= */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+h2 {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.link-blue {
+    color: #2563eb;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.goal-count {
+    color: #2563eb;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.filter-pills {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    /* Hide scrollbars for pills */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.filter-pills::-webkit-scrollbar { display: none; }
+
+.pill {
+    padding: 8px 20px;
+    border-radius: 20px;
+    border: 1px solid #dee2e6;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #495057;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.pill.active {
+    background: #eff6ff;
+    color: #2563eb;
+    border-color: #2563eb;
+}
+
+/* =========================================
+   4. WEEKLY CALENDAR STRIP
+   ========================================= */
+.calendar-strip {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.day {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.9rem;
+    color: #868e96;
+    font-weight: 600;
+}
+
+.day.active {
+    color: #2563eb;
+}
+
+.day.active span:last-child {
+    background: #2563eb;
+    color: white;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
+/* =========================================
+   5. HORIZONTAL SCROLL CARDS (Challenges & Warm-ups)
    ========================================= */
 .card-scroll-container {
-    display: flex; gap: 15px; overflow-x: auto; padding-bottom: 10px;
-    scroll-snap-type: x mandatory; scrollbar-width: none;
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    scroll-snap-type: x mandatory;
+    /* Hide scrollbars */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 .card-scroll-container::-webkit-scrollbar { display: none; }
+
 .challenge-card {
-    min-width: 280px; border-radius: 16px; padding: 25px; color: white;
-    scroll-snap-align: start; display: flex; flex-direction: column; gap: 10px;
+    min-width: 280px;
+    border-radius: 16px;
+    padding: 25px;
+    color: white;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
+
 .blue-card { background: linear-gradient(135deg, #2563eb, #1d4ed8); }
 .purple-card { background: linear-gradient(135deg, #9333ea, #7e22ce); }
+
 .days-left { font-size: 0.8rem; font-weight: bold; opacity: 0.9; }
 .challenge-card h3 { font-size: 1.1rem; }
 .challenge-card h2 { font-size: 2rem; margin: 10px 0; }
-.btn-start { background: white; color: #1a1a1a; border: none; padding: 12px; border-radius: 30px; font-weight: bold; width: 100%; cursor: pointer; }
 
-.filter-pills { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 5px; }
-.pill { padding: 8px 20px; border-radius: 20px; border: 1px solid #dee2e6; font-weight: 600; font-size: 0.9rem; color: #495057; white-space: nowrap; }
-.pill.active { background: #eff6ff; color: #2563eb; border-color: #2563eb; }
-
-/* =========================================
-   5. REPORT VIEW (NEW)
-   ========================================= */
-.report-stats { display: flex; justify-content: space-around; padding: 10px 0; border-bottom: 1px solid #f1f3f5; }
-.stat-box { display: flex; flex-direction: column; align-items: center; gap: 5px; }
-.stat-val { font-size: 1.5rem; font-weight: 900; color: #1a1a1a; }
-.stat-lbl { font-size: 0.8rem; color: #868e96; }
-
-.report-card { background: #ffffff; border: 1px solid #f1f3f5; border-radius: 16px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
-.streak-container { display: flex; justify-content: space-between; margin-top: 20px; padding-top: 15px; border-top: 1px dashed #e9ecef; }
-.streak-item { display: flex; flex-direction: column; gap: 5px; }
-.streak-item.right { text-align: right; }
-.streak-lbl { font-size: 0.8rem; color: #868e96; font-weight: 600; }
-.streak-val { font-size: 1.1rem; font-weight: bold; color: #1a1a1a; }
-
-.btn-log { background: #2563eb; color: white; border: none; padding: 6px 16px; border-radius: 20px; font-weight: bold; font-size: 0.85rem; }
-.weight-container { display: flex; justify-content: space-between; align-items: flex-end; }
-.weight-current { display: flex; flex-direction: column; gap: 5px; }
-.weight-val { font-size: 2rem; font-weight: 900; letter-spacing: -1px; }
-.weight-history { font-size: 0.85rem; color: #495057; text-align: right; line-height: 1.6; }
-
-/* =========================================
-   6. BOTTOM NAV
-   ========================================= */
-.bottom-nav {
-    position: fixed; bottom: 0; width: 100%; max-width: 480px; background: white;
-    display: flex; justify-content: space-around; padding: 15px 0 25px 0;
-    border-top: 1px solid #f1f3f5; z-index: 50;
+.progress-mini {
+    width: 100%;
+    height: 6px;
+    background: rgba(255,255,255,0.3);
+    border-radius: 10px;
 }
-.nav-item { display: flex; flex-direction: column; align-items: center; gap: 5px; font-size: 0.75rem; color: #868e96; font-weight: 600; cursor: pointer; }
-.nav-item.active { color: #2563eb; }
+.progress-mini .fill {
+    height: 100%;
+    background: white;
+    border-radius: 10px;
+}
 
-/* =========================================
-   7. WORKOUT PLAYER OVERLAY
-   ========================================= */
-.overlay-screen {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000000; color: #ffffff;
-    z-index: 100; display: flex; flex-direction: column; padding: 30px 20px;
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); transform: translateY(0);
+.wide-card {
+    min-width: 220px;
+    height: 120px;
+    border-radius: 12px;
+    background-color: #e9ecef; /* Placeholder gray for images */
+    position: relative;
+    overflow: hidden;
+    scroll-snap-align: start;
+    cursor: pointer;
 }
-.overlay-screen.hidden { transform: translateY(100%); pointer-events: none; }
-.player-nav { display: flex; align-items: center; gap: 20px; margin-bottom: 40px; }
-.btn-icon { background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer; }
-.progress-container { flex-grow: 1; }
-.progress-container span { display: block; font-size: 0.8rem; font-weight: bold; color: #888; margin-bottom: 5px; text-transform: uppercase; }
-.progress-bar { width: 100%; height: 6px; background: #333; border-radius: 10px; overflow: hidden; }
-.stamina-fill { background: #3b82f6; transition: width 0.3s ease; }
-.exercise-display { flex-grow: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
-.visual-box {
-    width: 250px; height: 250px; border-radius: 50%; border: 4px solid #333;
-    display: flex; justify-content: center; align-items: center; margin-bottom: 30px;
-    box-shadow: 0 0 40px rgba(59, 130, 246, 0.15);
+
+.card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.7));
+    color: white;
 }
-#exercise-timer { font-size: 4rem; font-weight: 900; font-variant-numeric: tabular-nums; }
-.exercise-title { font-size: 2.5rem; font-weight: 900; margin-bottom: 10px; }
-#exercise-type { color: #3b82f6; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; }
-.player-controls { margin-top: auto; }
-.btn-primary {
-    background: #ffffff; color: #000000; border: none; padding: 18px; border-radius: 30px;
-    font-size: 1rem; font-weight: bold; width: 100%; cursor: pointer; text-transform: uppercase;
+
+.card-overlay h3 { font-size: 1rem; font-weight: bold; margin-bottom: 2px;}
+.card-overlay p { font-size: 0.8rem; font-weight: 600; opacity: 0.9; }
+
+.btn-start {
+    background: white;
+    color: #1a1a1a;
+    border: none;
+    padding: 12px;
+    border-radius: 30px;
+    font-weight: bold;
+    width: 100%;
+    cursor: pointer;
+    text-transform: uppercase;
 }
 
 /* =========================================
-   8. DISCOVER TAB (GRID)
+   6. VERTICAL LIST ITEMS (Body Focus & Goals)
    ========================================= */
-.discover-grid { display: grid; gap: 15px; }
+.list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 5px;
+}
+
+.list-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+    border-radius: 12px;
+    background: #ffffff;
+    cursor: pointer;
+    transition: background 0.2s;
+    border: 1px solid #f1f3f5;
+}
+
+.list-item:active {
+    background: #f8f9fa;
+}
+
+.item-img {
+    width: 70px;
+    height: 70px;
+    border-radius: 12px;
+    background-color: #e9ecef; /* Placeholder gray for images */
+    flex-shrink: 0;
+}
+
+.item-info {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.item-info h4 { font-size: 1.1rem; font-weight: 900; }
+.item-info p { font-size: 0.85rem; color: #868e96; font-weight: 500; }
+
+.item-arrow {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #f1f3f5;
+    color: #1a1a1a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.7rem;
+    font-weight: bold;
+}
+
+.difficulty {
+    font-size: 0.8rem;
+    color: #2563eb; /* Blue lightning bolts */
+    margin-top: 2px;
+}
+.difficulty .dim { color: #e2e8f0; } /* Gray out unearned difficulty */
+
+/* =========================================
+   7. DISCOVER TAB (Grid Layout)
+   ========================================= */
+.discover-grid {
+    display: grid;
+    gap: 15px;
+}
+
 .discover-card {
-    border-radius: 16px; padding: 25px; color: white;
-    display: flex; flex-direction: column; gap: 10px;
+    border-radius: 16px;
+    padding: 25px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    cursor: pointer;
 }
+
 .discover-card h3 { font-size: 1.5rem; margin-bottom: 5px; }
 .core-bg { background: linear-gradient(135deg, #f59e0b, #d97706); }
 .hiit-bg { background: linear-gradient(135deg, #ef4444, #b91c1c); }
 .strength-bg { background: linear-gradient(135deg, #10b981, #047857); }
 
 /* =========================================
-   9. BOTTOM SHEET MODAL (WEIGHT LOG)
+   8. REPORT TAB (Stats & Cards)
+   ========================================= */
+.report-stats {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    border-bottom: 1px solid #f1f3f5;
+}
+
+.stat-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.stat-val { font-size: 1.5rem; font-weight: 900; color: #1a1a1a; }
+.stat-lbl { font-size: 0.8rem; color: #868e96; font-weight: 600; }
+
+.report-card {
+    background: #ffffff;
+    border: 1px solid #f1f3f5;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+}
+
+.streak-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px dashed #e9ecef;
+}
+
+.streak-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.streak-lbl { font-size: 0.8rem; color: #868e96; font-weight: 600; }
+.streak-val { font-size: 1.1rem; font-weight: bold; color: #1a1a1a; }
+
+.btn-log {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+.weight-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.weight-current {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.weight-val { font-size: 2rem; font-weight: 900; letter-spacing: -1px; }
+
+/* =========================================
+   9. SETTINGS TAB (Toggles & Danger Zone)
+   ========================================= */
+.settings-group {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 20px;
+    border: 1px solid #f1f3f5;
+}
+
+.settings-group h2 {
+    font-size: 1rem;
+    color: #868e96;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+.setting-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.setting-title { display: block; font-weight: bold; font-size: 1.1rem; color: #1a1a1a; }
+.setting-desc { display: block; font-size: 0.85rem; color: #868e96; margin-top: 3px; }
+
+/* Toggle Switch UI */
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 28px;
+}
+
+.toggle-switch input { opacity: 0; width: 0; height: 0; }
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #cbd5e1;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider { background-color: #10b981; }
+input:checked + .slider:before { transform: translateX(22px); }
+
+/* Danger Button */
+.btn-danger {
+    width: 100%;
+    background: #fee2e2;
+    color: #dc2626;
+    border: 2px solid #fecaca;
+    padding: 15px;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+/* =========================================
+   10. BOTTOM NAVIGATION
+   ========================================= */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    max-width: 480px;
+    background: white;
+    display: flex;
+    justify-content: space-around;
+    padding: 15px 0 25px 0; /* Extra padding for modern phones */
+    border-top: 1px solid #f1f3f5;
+    z-index: 50;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.75rem;
+    color: #868e96;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.nav-item.active {
+    color: #2563eb;
+}
+
+/* =========================================
+   11. WORKOUT PLAYER OVERLAY (Dark Mode)
+   ========================================= */
+.overlay-screen {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: #000000;
+    color: #ffffff;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    padding: 30px 20px;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(0);
+}
+
+.overlay-screen.hidden {
+    transform: translateY(100%);
+    pointer-events: none;
+}
+
+.player-nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.btn-icon {
+    background: none;
+    border: none;
+    color: #1a1a1a;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+.player-nav .btn-icon { color: white; } /* Keep quit button white on dark bg */
+
+.progress-container { flex-grow: 1; }
+.progress-container span { display: block; font-size: 0.8rem; font-weight: bold; color: #888; margin-bottom: 5px; text-transform: uppercase; }
+
+.progress-bar {
+    width: 100%;
+    height: 6px;
+    background: #333;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.stamina-fill {
+    background: #2563eb;
+    transition: width 0.3s ease;
+}
+
+.exercise-display {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.visual-box {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    border: 4px solid #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+    box-shadow: 0 0 40px rgba(37, 99, 235, 0.15);
+}
+
+#exercise-timer { font-size: 4rem; font-weight: 900; font-variant-numeric: tabular-nums; }
+.exercise-title { font-size: 2.5rem; font-weight: 900; margin-bottom: 10px; }
+#exercise-type { color: #2563eb; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; }
+
+.player-controls { margin-top: auto; }
+
+.btn-primary {
+    background: #ffffff;
+    color: #000000;
+    border: none;
+    padding: 18px;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    width: 100%;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+/* =========================================
+   12. BOTTOM SHEET MODALS (Weight Logging)
    ========================================= */
 .modal-overlay {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.5); z-index: 150;
-    opacity: 1; transition: opacity 0.3s ease;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 150;
+    opacity: 1;
+    transition: opacity 0.3s ease;
 }
-.modal-overlay.hidden { opacity: 0; pointer-events: none; }
+
+.modal-overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
 
 .bottom-sheet {
-    position: fixed; bottom: 0; left: 0; width: 100%;
-    background: #ffffff; border-radius: 20px 20px 0 0;
-    padding: 25px; z-index: 200;
-    transform: translateY(0); transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    position: fixed;
+    bottom: 0; left: 0; width: 100%;
+    background: #ffffff;
+    border-radius: 20px 20px 0 0;
+    padding: 25px;
+    z-index: 200;
+    transform: translateY(0);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     box-shadow: 0 -5px 15px rgba(0,0,0,0.1);
 }
+
 .bottom-sheet.hidden { transform: translateY(100%); }
 
-.sheet-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.sheet-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
 .sheet-header h3 { font-size: 1.2rem; font-weight: bold; }
-.sheet-header .btn-icon { color: #1a1a1a; }
 
 .sheet-body input {
-    width: 100%; padding: 15px; border-radius: 10px;
-    border: 2px solid #e2e8f0; font-size: 1.2rem;
-    text-align: center; font-weight: bold; outline: none;
+    width: 100%;
+    padding: 15px;
+    border-radius: 10px;
+    border: 2px solid #e2e8f0;
+    font-size: 1.2rem;
+    text-align: center;
+    font-weight: bold;
+    outline: none;
 }
-.sheet-body input:focus { border-color: #2563eb; }
+
+.sheet-body input:focus {
+    border-color: #2563eb;
+}
